@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:any_link_preview/any_link_preview.dart';
 import 'package:flutter_polls/flutter_polls.dart';
+import 'package:hiriizi/components/widgets.dart';
 
 class ChallengeScreen extends StatefulWidget {
   const ChallengeScreen({super.key});
@@ -12,8 +13,7 @@ class ChallengeScreen extends StatefulWidget {
 }
 
 class _ChallengeScreenState extends State<ChallengeScreen> {
-  final String _errorImage =
-      "https://i.ytimg.com/vi/z8wrRRR7_qU/maxresdefault.jpg";
+  final String _errorImage = "https://i.ytimg.com/vi/z8wrRRR7_qU/maxresdefault.jpg";
   final String _url1 =
       "https://www.espn.in/football/soccer-transfers/story/4163866/transfer-talk-lionel-messi-tells-barcelona-hes-more-likely-to-leave-then-stay";
 
@@ -60,6 +60,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        titleSpacing: 0,
         leading: const Icon(CupertinoIcons.back),
         centerTitle: true,
         title: Padding(
@@ -84,7 +85,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                 padding: const EdgeInsets.only(
                   left: 21,
                   top: 21,
-                  right: 20,
+                  right: 21,
                 ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -140,21 +141,26 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                             children: [
                               const Stack(
                                 children: [
-                                  Row(
-                                    children: [
-                                      participants(
-                                        imageUrl: 'images/user1.jpg',
-                                      ),
-                                      participants(
-                                        imageUrl: 'images/user2.jpg',
-                                      ),
-                                      participants(
-                                        imageUrl: 'images/user3.jpg',
-                                      ),
-                                      participants(
-                                        imageUrl: 'images/user4.jpg',
-                                      ),
-                                    ],
+                                  Positioned(
+                                    left: 70,
+                                    child: participants(
+                                      imageUrl: 'images/user1.jpg',
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 35,
+                                    child: participants(
+                                      imageUrl: 'images/user2.jpg',
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 10,
+                                    child: participants(
+                                      imageUrl: 'images/user3.jpg',
+                                    ),
+                                  ),
+                                  participants(
+                                    imageUrl: 'images/user4.jpg',
                                   ),
                                 ],
                               ),
@@ -199,8 +205,8 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                       child: GestureDetector(
                         child: DayButton(
                           dayCount: dayCount,
-                          selectedColor: Colors.white,
-                          borderColor: true,
+                          selectedColor: Color(0XFFF07F20),
+                          borderColor: false,
                         ),
                         onTap: () {},
                       ),
@@ -340,11 +346,11 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                           PollOption(id: '2', title: const Text('Done'), votes: 5),
                         ],
                             votedProgressColor:const Color(0XFF59EA26),
-                            voteInProgressColor: Colors.purple, leadingVotedProgessColor: const Color(0XFFDDF545),
+                            voteInProgressColor: Colors.blueAccent, leadingVotedProgessColor: const Color(0XFFDDF545),
 
 
 
-                         )
+                         ),
                       ],
                     ),
                   ),
@@ -358,48 +364,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
   }
 }
 
-class DayButton extends StatelessWidget {
-  const DayButton({
-    super.key,
-    required this.dayCount,
-    required this.selectedColor,
-    required this.borderColor,
-  });
 
-  final int dayCount;
-  final Color selectedColor;
-  final bool borderColor;
-
-  @override
-  Widget build(BuildContext context) {
-    buttonBorderColor(bool borderColor) {
-      if (borderColor == false) {
-        return Colors.transparent;
-      } else {
-        return Colors.black38;
-      }
-    }
-
-    return Container(
-      width: 89,
-      height: 39,
-      decoration: BoxDecoration(
-          border: Border.all(color: buttonBorderColor(borderColor)),
-          color: selectedColor,
-          borderRadius: BorderRadius.circular(12)),
-      child: Center(
-        child: Text(
-          'Day' + ' $dayCount',
-          style: GoogleFonts.roboto(
-              textStyle: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 12,
-          )),
-        ),
-      ),
-    );
-  }
-}
 
 class participants extends StatelessWidget {
   final String imageUrl;
