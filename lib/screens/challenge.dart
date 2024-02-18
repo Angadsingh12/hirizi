@@ -1,9 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:any_link_preview/any_link_preview.dart';
 import 'package:flutter_polls/flutter_polls.dart';
 import 'package:hiriizi/components/widgets.dart';
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
+import 'package:path_provider/path_provider.dart';
 
 class ChallengeScreen extends StatefulWidget {
   const ChallengeScreen({super.key});
@@ -102,7 +105,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                             Container(
                               height: 36,
                               width: 36,
-                              child: const CircleAvatar(
+                              child:  CircleAvatar(
                                 backgroundImage:
                                     AssetImage('images/profilepic1.jpg'),
                                 backgroundColor: Colors.transparent,

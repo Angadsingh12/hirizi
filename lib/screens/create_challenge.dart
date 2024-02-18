@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hiriizi/components/widgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CreateChallenge extends StatefulWidget {
   const CreateChallenge({super.key});
@@ -40,8 +41,13 @@ class _CreateChallengeState extends State<CreateChallenge> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Image.network(
-                      'https://s3-alpha-sig.figma.com/img/945f/ec4e/60c632e61c6f1797e267f08f4c22f025?Expires=1708905600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=aNJcRsNgGGuS6~D2G6uUQaSm7DBIgV7NZSgjytGV-o2xtgDa6Lj8MPb~azealTJhur0LDR~DNtFecKty7JiCXucm~t8hCXimpX04MXEz43iTTmzbMcpVXGAd1qJNXSGvTf2TFIv4~YMEKkLUzM2K4XF3~zx4OPiyRH0CPGjnPagK5EC8BK9QExV93YDwcdVhu9RDL6NFR-Tc-Dj2NGrGJZBeVEjGo3NNkgYF2fhtLxbGR2UgdNHZ2khv5~C3BH8vnAcatTgyojMNzJjLAJpoQKw9fsWgwe2mJnEnRrtyeJGGrllvAIPMCixNp0z2urmfqYapXDrH4KLCQKUuNQPcJg__'),
+                  child: CachedNetworkImage(
+                    imageUrl: "https://images.pexels.com/photos/3979134/pexels-photo-3979134.jpeg",
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
+                  // child: Image.network(
+                  //     'https://s3-alpha-sig.figma.com/img/945f/ec4e/60c632e61c6f1797e267f08f4c22f025?Expires=1708905600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=aNJcRsNgGGuS6~D2G6uUQaSm7DBIgV7NZSgjytGV-o2xtgDa6Lj8MPb~azealTJhur0LDR~DNtFecKty7JiCXucm~t8hCXimpX04MXEz43iTTmzbMcpVXGAd1qJNXSGvTf2TFIv4~YMEKkLUzM2K4XF3~zx4OPiyRH0CPGjnPagK5EC8BK9QExV93YDwcdVhu9RDL6NFR-Tc-Dj2NGrGJZBeVEjGo3NNkgYF2fhtLxbGR2UgdNHZ2khv5~C3BH8vnAcatTgyojMNzJjLAJpoQKw9fsWgwe2mJnEnRrtyeJGGrllvAIPMCixNp0z2urmfqYapXDrH4KLCQKUuNQPcJg__'),
                 ), // change it to network image
                 Padding(
                   padding: const EdgeInsets.all(8.0),

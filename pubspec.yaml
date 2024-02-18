@@ -38,6 +38,9 @@ dependencies:
   google_fonts: ^6.1.0
   any_link_preview: ^3.0.1
   flutter_polls: ^0.1.6
+  cached_network_image: ^3.3.1
+  fast_cached_network_image: ^1.2.7
+  path_provider: ^2.1.2
 
 dev_dependencies:
   flutter_test:
