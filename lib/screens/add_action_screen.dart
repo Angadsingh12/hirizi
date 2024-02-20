@@ -11,10 +11,28 @@ class ActionScreen extends StatefulWidget {
 }
 
 class _ActionScreenState extends State<ActionScreen> {
+  void signInDialog(String message){
+    showDialog(context: context, builder: (BuildContext context){
+      return AlertDialog(
+        title: Text('Delete'),
+        content: Text(message),
+        actions: <Widget>[
+          TextButton(onPressed: (){
+            setState(() {
+              selectedDays.remove(selectedDay);
+            });
+
+            Navigator.pop(context);}, child: Text('Yes'),),
+          TextButton(onPressed: (){Navigator.pop(context);}, child: Text('No'),)
+        ],
+      );
+    });}
   final controller = TextEditingController();
   Color nonSelectedColour = const Color(0XFFE9E9E9);
   List<int> selectedDays = [1]; // Default day 1
   int? selectedDay;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,16 +72,23 @@ class _ActionScreenState extends State<ActionScreen> {
                             Padding(
                               padding: const EdgeInsets.only(left: 20.0, top: 10),
                               child: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    // Handle single tap (select day)
+                                    // If the tapped day is not already selected, add it to the selectedDays list
+                                    if (selectedDay != dayCount) {
+                                      selectedDay = dayCount;
+                                    }
+                                  });
+                                },
+                                onLongPress: () {
+                                  signInDialog('Delete');
+                                },
                                 child: DayButton(
                                   dayCount: dayCount,
                                   selectedColor: selectedDay == dayCount ? Colors.orange : Color(0XFFF1F1F1),
                                   borderColor: false,
                                 ),
-                                onTap: () {
-                                  setState(() {
-                                    selectedDay = dayCount;
-                                  });
-                                },
                               ),
                             ),
                           Padding(

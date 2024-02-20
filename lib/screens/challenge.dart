@@ -107,7 +107,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                               width: 36,
                               child:  CircleAvatar(
                                 backgroundImage:
-                                    AssetImage('images/profilepic1.jpg'),
+                                   CachedNetworkImageProvider('https://www.figma.com/file/nywGziuOEr8sUk7vIF7VlR/image/7dc91b59fe24b434b904bac7b9450aa09f249f20'),
                                 backgroundColor: Colors.transparent,
                               ),
                             ),
